@@ -1,0 +1,334 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased font-sans;
+  }
+}
+
+:root {
+  /* Light Theme (Default) */
+  --md-stage-bg: #f8fafc;
+  --md-bg: #ffffff;
+  --md-text: #1e293b;
+  --md-heading: #0f172a;
+  --md-border: #e2e8f0;
+  --md-code-bg: #f1f5f9;
+  --md-code-text: #1e293b;
+  --md-link: #4f46e5;
+  --md-blockquote-border: #6366f1;
+  --md-blockquote-bg: #f8fafc;
+  --md-blockquote-text: #475569;
+  --md-table-header-bg: #f8fafc;
+  --md-table-row-hover: #f1f5f9;
+  --md-font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --md-font-heading: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Glass View Special Styling */
+.theme-glass .markdown-content {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+/* Cyber Neon Special Styling */
+.theme-neon .markdown-content {
+  box-shadow: 0 0 50px -10px rgba(34, 211, 238, 0.15), 0 0 0 1px rgba(34, 211, 238, 0.25);
+}
+
+.theme-neon .markdown-content h1,
+.theme-neon .markdown-content h2 {
+  text-shadow: 0 0 24px rgba(34, 211, 238, 0.35);
+}
+
+/* Mermaid SVG Diagrams Anti-Clipping */
+.mermaid-diagram svg {
+  overflow: visible !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.mermaid-diagram foreignObject {
+  overflow: visible !important;
+}
+
+.mermaid-diagram foreignObject div {
+  overflow: visible !important;
+  line-height: 1.35 !important;
+  padding-bottom: 6px !important;
+}
+
+/* Fluid Animated Background Orbs */
+@keyframes float-orb-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(45px, -35px, 0) scale(1.12);
+  }
+  66% {
+    transform: translate3d(-30px, 25px, 0) scale(0.94);
+  }
+}
+
+@keyframes float-orb-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(0.96);
+  }
+  33% {
+    transform: translate3d(-50px, 40px, 0) scale(1.1);
+  }
+  66% {
+    transform: translate3d(35px, -30px, 0) scale(1);
+  }
+}
+
+@keyframes float-orb-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(35px, -30px, 0) scale(1.08);
+  }
+}
+
+@keyframes pulse-mesh {
+  0%, 100% {
+    opacity: 0.14;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.22;
+    transform: scale(1.02);
+  }
+}
+
+.animate-orb-1 {
+  animation: float-orb-1 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-2 {
+  animation: float-orb-2 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-3 {
+  animation: float-orb-3 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-mesh-pulse {
+  animation: pulse-mesh 10s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Markdown Styles */
+.markdown-content {
+  background-color: var(--md-bg);
+  color: var(--md-text);
+  font-family: var(--md-font-body);
+  border-color: var(--md-border);
+  @apply leading-relaxed transition-colors duration-200;
+}
+
+.markdown-content > * + * {
+  @apply mt-6;
+}
+
+.markdown-content h1 {
+  color: var(--md-heading);
+  font-family: var(--md-font-heading);
+  border-bottom-color: var(--md-border);
+  @apply text-4xl font-bold tracking-tight mt-12 mb-6 pb-4 border-b;
+}
+
+.markdown-content h2 {
+  color: var(--md-heading);
+  font-family: var(--md-font-heading);
+  border-bottom-color: var(--md-border);
+  @apply text-2xl font-semibold tracking-tight mt-10 mb-4 pb-2 border-b;
+}
+
+.markdown-content h3 {
+  color: var(--md-heading);
+  font-family: var(--md-font-heading);
+  @apply text-xl font-semibold mt-8 mb-3;
+}
+
+.markdown-content h4 {
+  color: var(--md-heading);
+  font-family: var(--md-font-heading);
+  @apply text-lg font-medium mt-6 mb-2;
+}
+
+.markdown-content p {
+  color: var(--md-text);
+  @apply text-base leading-7 mb-4;
+}
+
+.markdown-content ul {
+  @apply list-disc list-outside ml-6 mb-4 marker:text-slate-400;
+}
+
+.markdown-content ol {
+  @apply list-decimal list-outside ml-6 mb-4 marker:text-slate-400;
+}
+
+.markdown-content li {
+  @apply pl-2 mb-2;
+}
+
+.markdown-content li > p {
+  @apply mb-2;
+}
+
+.markdown-content blockquote {
+  border-left-color: var(--md-blockquote-border);
+  background-color: var(--md-blockquote-bg);
+  color: var(--md-blockquote-text);
+  @apply border-l-4 pl-6 py-1 my-6 italic rounded-r-lg;
+}
+
+.markdown-content code {
+  background-color: var(--md-code-bg);
+  color: var(--md-code-text);
+  border-color: var(--md-border);
+  @apply font-mono text-sm px-1.5 py-0.5 rounded border;
+}
+
+.markdown-content pre {
+  background-color: var(--md-code-bg);
+  color: var(--md-code-text);
+  border-color: var(--md-border);
+  @apply p-4 rounded-xl overflow-x-auto my-6 border shadow-sm;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent text-inherit p-0 border-0 text-sm leading-6;
+}
+
+.markdown-content a {
+  color: var(--md-link);
+  @apply hover:underline underline-offset-2 transition-colors;
+}
+
+.markdown-content img {
+  border-color: var(--md-border);
+  @apply rounded-xl shadow-md my-8 max-w-full h-auto border;
+}
+
+.markdown-content hr {
+  border-top-color: var(--md-border);
+  @apply border-t my-12;
+}
+
+/* Table Styles */
+.markdown-content table {
+  border-color: var(--md-border);
+  @apply w-full border-collapse my-8 text-sm text-left overflow-hidden rounded-lg shadow-sm border;
+}
+
+.markdown-content thead {
+  background-color: var(--md-table-header-bg);
+  border-bottom-color: var(--md-border);
+  @apply border-b;
+}
+
+.markdown-content th {
+  color: var(--md-heading);
+  @apply font-semibold px-6 py-3 text-xs uppercase tracking-wider;
+}
+
+.markdown-content tbody tr {
+  border-bottom-color: var(--md-border);
+  @apply border-b last:border-0 transition-colors;
+}
+
+.markdown-content tbody tr:hover {
+  background-color: var(--md-table-row-hover);
+}
+
+.markdown-content td {
+  color: var(--md-text);
+  @apply px-6 py-4 align-top;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 2cm;
+  }
+
+  body, #root, .min-h-screen {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .markdown-content {
+    font-size: 11pt;
+    line-height: 1.5;
+    background-color: white !important;
+    color: black !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3,
+  .markdown-content h4 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  .markdown-content h1 {
+    font-size: 24pt;
+    margin-top: 0;
+  }
+
+  .markdown-content h2 {
+    font-size: 18pt;
+    margin-top: 2em;
+  }
+
+  .markdown-content h3 {
+    font-size: 14pt;
+  }
+
+  .markdown-content pre {
+    background: #f8f9fa !important;
+    color: #333 !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+  }
+
+  .markdown-content table {
+    page-break-inside: avoid;
+    border: 1px solid #ddd !important;
+  }
+
+  .markdown-content tr {
+    page-break-inside: avoid;
+  }
+  
+  .markdown-content a {
+    text-decoration: none !important;
+    color: black !important;
+  }
+  
+  /* Show href after links for printed docs */
+  .markdown-content a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}

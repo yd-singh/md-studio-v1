@@ -1,0 +1,8 @@
+{
+  "name": "MD Studio",
+  "description": "Professional Markdown reader and documentation suite with GitHub repo fetching, ZIP archive unpacking, folder mode, table of contents outline, reading time badge, and PDF/HTML exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
